@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Router } from "@angular/router"
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private authenticationService: AuthenticationService,
-              private router: Router) {
+              private router: Router,
+              private cookieService: CookieService ) {
     this.loginForm = this.formBuilder.group({
       username: '',
       password: ''
@@ -25,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.authenticationService.login(this.loginForm.value).subscribe((data) => {
-      console.log(data);
+      this.cookieService.set('CONGO_JWT', data.token);
       this.router.navigateByUrl("/home/" + this.loginForm.value.username);
     },
     (error) => {

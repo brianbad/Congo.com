@@ -1,1 +1,1 @@
-<p>Welcome, {{ loggedInUsername }}</p>
+<p *ngIf="loggedInUser">Welcome, {{ loggedInUser.firstName }}  {{ loggedInUser.lastName }}</p>
