@@ -1,1 +1,5 @@
-<p *ngIf="loggedInUser">Welcome, {{ loggedInUser.firstName }}  {{ loggedInUser.lastName }}</p>
+<div *ngIf="loggedInUser">
+    <h1>Welcome, {{ loggedInUser.firstName }}  {{ loggedInUser.lastName }}</h1>
+    <p>Email: {{ loggedInUser.email }}</p>
+    <p>Username: {{ loggedInUser.username }}</p>
+</div>

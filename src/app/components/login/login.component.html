@@ -1,5 +1,7 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()" (ngTouch)="login()">
-    <input type="text" formControlName="username" placeholder="Username" />
-    <input type="password" formControlName="password" placeholder="Password" />
-    <button class="button" type="submit">Log In</button>
-</form>
+<div class="login-container">
+    <form [formGroup]="loginForm" (ngSubmit)="login()" (ngTouch)="login()">
+        <input class="login-input" type="text" formControlName="username" placeholder="Username" />
+        <input class="login-input" type="password" formControlName="password" placeholder="Password" />
+        <button class="login-button" type="submit">Log In</button>
+    </form>
+</div>
