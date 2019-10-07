@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cookieService: CookieService,
+              private router: Router) { }
 
   ngOnInit() {
+  }
+
+  logout() {
+    this.cookieService.delete("CONGO_JWT");
+    this.router.navigateByUrl("/login");
   }
 
 }

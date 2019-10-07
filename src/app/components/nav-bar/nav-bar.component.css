@@ -1,10 +1,10 @@
 .nav-bar {
-    background: linear-gradient(to bottom, #FFEF00, rgb(255, 243, 73));
+    background: #FFEF00;
     border-bottom: 2px solid rgb(71, 71, 71);
-    font-size: 26px;
-    padding: 10px;
+    padding: 5px;
 }
 
 .nav-bar-title {
-    font-weight: bold;
+    height: 40px;
+    cursor: pointer;
 }
