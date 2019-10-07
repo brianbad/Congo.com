@@ -1,7 +1,7 @@
 .login-input, .login-button {
     display: block;
     border-radius: 10px;
-    width: 90%;
+    width: 100%;
     margin-top: 5px;
     margin-bottom: 5px;
     margin-left: auto;
@@ -22,11 +22,44 @@
 }
 
 .login-container {
+    background: white;
     border: 2px solid black;
     border-radius: 10px;
+    margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
     width: 300px;
+}
+
+.login-prompt-container {
+    border-bottom: 1px solid black;
+}
+
+.login-prompt {
+    margin: 5px;
+}
+
+.logo-container {
+    text-align: center;
+}
+
+.form-container {
+    margin: 10px 5px;
+}
+
+.input-container {
+    margin-bottom: 20px;
+}
+
+.register-container {
+    text-align: center;
+    margin: 10px 0px;
+}
+
+.register-link {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 12px;
 }
 
 @media screen and (max-width: 600px) {

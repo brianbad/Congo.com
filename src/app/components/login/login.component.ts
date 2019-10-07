@@ -31,7 +31,8 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl("/home/" + this.loginForm.value.username);
     },
     (error) => {
-      alert(error.message);
+      alert(error.error.message);
+      console.log(error);
     });
   }
 
