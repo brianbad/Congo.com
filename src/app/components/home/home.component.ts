@@ -11,6 +11,8 @@ export class HomeComponent implements OnInit {
   loggedInUsername: string;
   loggedInUser: User;
 
+  users: User[];
+
   constructor(private activateRoute: ActivatedRoute,
               private usersServices: UsersService) { }
 
@@ -22,6 +24,11 @@ export class HomeComponent implements OnInit {
       // Retrieve the full user object via username
       this.usersServices.getUser(this.loggedInUsername).subscribe((data) => {
         this.loggedInUser = data[0];
+      })
+
+      // Retrieve all user data
+      this.usersServices.getAllUsers().subscribe((data) => {
+        this.users = data;
       })
     });
   }
