@@ -27,8 +27,8 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.authenticationService.login(this.loginForm.value).subscribe((data) => {
-      this.cookieService.set('CONGO_JWT', data.token);
-      this.router.navigateByUrl("/home/" + this.loginForm.value.username);
+      this.cookieService.set('CONGO_JWT', data.token, 1, '/');
+      this.router.navigateByUrl("/home");
     },
     (error) => {
       alert(error.error.message);
