@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit {
     // Retrieve the logged-in user.
     this.authenticationServices.getUserFromToken().subscribe((data) => {
       this.loggedInUser = data;
-      console.log(this.loggedInUser);
     })
   }
 }

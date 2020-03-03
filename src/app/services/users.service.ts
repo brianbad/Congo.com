@@ -8,21 +8,31 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class UsersService {
-  API_BASE_URL: string = environment.apiBaseUrl;
-
-  headers = new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer ' + this.cookieService.get('CONGO_JWT')
-  })
+  private API_BASE_URL: string = environment.apiBaseUrl;
+  private headers: HttpHeaders;
 
   constructor(private http: HttpClient,
               private cookieService: CookieService) { }
 
   getUser(username: string):Observable<any> {
+    this.setHeaders();
     return this.http.get(this.API_BASE_URL + "/users/" + username, { headers: this.headers })
   }
 
+  updateUser(username: string, body: object):Observable<any> {
+    this.setHeaders();
+    return this.http.put(this.API_BASE_URL + "/users/update/" + username, body, { headers: this.headers })
+  }
+
   getAllUsers():Observable<any> {
+    this.setHeaders();
     return this.http.get(this.API_BASE_URL + "/users", { headers: this.headers })
+  }
+
+  setHeaders() {
+    this.headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.cookieService.get('CONGO_JWT')
+    })
   }
 }

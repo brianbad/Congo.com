@@ -1,25 +1,35 @@
 <div class="nav-bar">
     <span class="nav-left-content">
         <!-- Main logo -->
-        <img src="../../assets/images/site/nav_logo.png" class="nav-bar-title">
+        <img src="../../assets/images/site/nav_logo.png" class="nav-bar-title" (click)="toHome()">
 
         <!-- Search Bar -->
         <div class="search-wrapper">
             <input type="text" class="search-input search-component" placeholder="Search not implemented"/>
-            <button mat-raised-button class="search-button search-component"><mat-icon>search</mat-icon></button>
+            <button mat-raised-button color="primary" class="search-button search-component"><mat-icon>search</mat-icon></button>
         </div>
     </span>
     <span class="nav-right-content">
+        <!-- Cart Button -->
+        <button mat-button *ngIf="loggedInUser">
+            <span class="navbar-button-content">
+                <mat-icon>shopping_cart</mat-icon>
+                My Cart
+            </span>
+        </button>
+
         <!-- Account Button -->
-        <button *ngIf="!loggedInUser" class="account-button" (click)="toLogin()">Log In</button>
-        <button *ngIf="loggedInUser" class="account-button" [matMenuTriggerFor]="accountMenu">
-            <span class="account-button-content">
+        <button mat-button *ngIf="!loggedInUser" (click)="toLogin()">
+            <span class="navbar-button-content">Log In</span>
+        </button>
+        <button mat-button *ngIf="loggedInUser" [matMenuTriggerFor]="accountMenu">
+            <span class="navbar-button-content">
                 Hello, {{ loggedInUser.firstName }}
                 <mat-icon>keyboard_arrow_down</mat-icon>
             </span>
         </button>
         <mat-menu #accountMenu="matMenu" class="account-menu-dropdown">
-            <button mat-menu-item>Account Details</button>
+            <button mat-menu-item (click)="toAccountDetails()">Account Details</button>
             <button mat-menu-item (click)="logout()">Logout</button>
         </mat-menu>
     </span>

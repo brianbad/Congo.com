@@ -12,14 +12,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatIconModule, MatButtonModule, MatMenuModule } from '@angular/material';
+import { MatIconModule, MatButtonModule, MatMenuModule, MatFormFieldModule, MatInputModule, MatSnackBarModule } from '@angular/material';
+import { AccountDetailsComponent } from './components/account-details/account-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    NavBarComponent
+    NavBarComponent,
+    AccountDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,10 @@ import { MatIconModule, MatButtonModule, MatMenuModule } from '@angular/material
     BrowserAnimationsModule,
     MatIconModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSnackBarModule
   ],
   providers: [
     CookieService
