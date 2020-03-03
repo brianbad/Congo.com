@@ -9,7 +9,6 @@ import { AuthenticationService } from "../../services/authentication.service";
 })
 export class HomeComponent implements OnInit {
   private loggedInUser: User;
-  private users: User[];
 
   constructor(private usersServices: UsersService,
               private authenticationServices: AuthenticationService) {
@@ -20,11 +19,6 @@ export class HomeComponent implements OnInit {
     this.authenticationServices.getUserFromToken().subscribe((data) => {
       this.loggedInUser = data;
       console.log(this.loggedInUser);
-    })
-
-    // Retrieve all user data
-    this.usersServices.getAllUsers().subscribe((data) => {
-      this.users = data;
     })
   }
 }

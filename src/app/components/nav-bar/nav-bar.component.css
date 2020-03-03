@@ -1,6 +1,6 @@
 .nav-bar {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     background: #FFEF00;
     border-bottom: 2px solid rgb(71, 71, 71);
     padding: 5px;
@@ -9,6 +9,10 @@
 .nav-bar-title {
     height: 50px;
     cursor: pointer;
+}
+
+.nav-left-content, .nav-right-content {
+    display: flex;
 }
 
 /** -- **/
@@ -49,9 +53,18 @@
 .account-button {
     background: transparent;
     color: black;
-    border-style: none;
+    border: 2px solid transparent;
+    text-align: left;
 }
 
 .account-button:hover {
     cursor: pointer;
+    border: 2px solid rgb(71, 71, 71);
+    border-radius: 5px;
+}
+
+.account-button-content {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
 }

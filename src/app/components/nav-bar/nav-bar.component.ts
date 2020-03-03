@@ -23,6 +23,10 @@ export class NavBarComponent implements OnInit {
 
   logout() {
     this.cookieService.delete('CONGO_JWT');
+    this.loggedInUser = undefined;
+  }
+
+  toLogin() {
     this.router.navigateByUrl("/login");
   }
 
