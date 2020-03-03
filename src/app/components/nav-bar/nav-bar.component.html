@@ -1,3 +1,15 @@
 <div class="nav-bar">
+    <!-- Main logo -->
     <img src="../../assets/images/site/nav_logo.png" class="nav-bar-title" (click)="logout()">
+
+    <!-- Search Bar -->
+    <div class="search-wrapper">
+        <input type="text" class="search-input search-component" placeholder="Search not implemented"/>
+        <button mat-raised-button class="search-button search-component"><mat-icon>search</mat-icon></button>
+    </div>
+
+    <!-- Account Button -->
+    <button *ngIf="loggedInUser" class="account-button" title="User: {{ loggedInUser.username }}"><mat-icon>account_circle</mat-icon></button>
+    <button *ngIf="!loggedInUser" class="account-button" title="Please Sign In"><mat-icon>account_circle</mat-icon></button>
+    
 </div>

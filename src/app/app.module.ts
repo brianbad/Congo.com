@@ -11,6 +11,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule, MatButtonModule, MatMenuModule } from '@angular/material';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +26,11 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule
   ],
   providers: [
     CookieService
