@@ -8,21 +8,18 @@ import { AuthenticationService } from "../../services/authentication.service";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  loggedInUsername: string;
-  loggedInUser: User;
-
-  users: User[];
+  private loggedInUser: User;
+  private users: User[];
 
   constructor(private usersServices: UsersService,
-              private authenticationServices: AuthenticationService) { }
+              private authenticationServices: AuthenticationService) {
+  }
 
   ngOnInit() {
+    // Retrieve the logged-in user.
     this.authenticationServices.getUserFromToken().subscribe((data) => {
-      let username = data.username;
-      // Retrieve the full user object via username
-      this.usersServices.getUser(username).subscribe((data) => {
-        this.loggedInUser = data[0];
-      })
+      this.loggedInUser = data;
+      console.log(this.loggedInUser);
     })
 
     // Retrieve all user data
@@ -30,8 +27,6 @@ export class HomeComponent implements OnInit {
       this.users = data;
     })
   }
-
-
 }
 
 interface User {

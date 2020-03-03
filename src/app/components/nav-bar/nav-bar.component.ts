@@ -16,7 +16,7 @@ export class NavBarComponent implements OnInit {
   }
 
   logout() {
-    this.cookieService.delete("CONGO_JWT", "/");
+    this.cookieService.delete('CONGO_JWT');
     this.router.navigateByUrl("/login");
   }
 
