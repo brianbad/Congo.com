@@ -16,6 +16,11 @@ export class ItemsService {
   constructor(private http: HttpClient,
               private cookieService: CookieService) { }
 
+  getItemsBySeller(username) {
+    this.setHeaders();
+    return this.http.get(this.API_BASE_URL + "/items/fromSeller/" + username, { headers: this.headers });
+  }
+
   getAllItems() {
     this.setHeaders();
     this.http.get(this.API_BASE_URL + "/items", { headers: this.headers }).subscribe((data) => {

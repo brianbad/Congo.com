@@ -1,0 +1,39 @@
+.mat-card {
+    margin: 10px;
+}
+
+.item-listing-card {
+    min-width: 300px;
+    width: 24%;
+    margin: 0.5%;
+    text-align: center;
+}
+
+.item-listing-card:hover {
+    cursor: pointer;
+}
+
+.items-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item-image-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+
+.item-image-wrapper > img {
+    object-fit: contain;
+    max-height: 300px;
+}
+
+.item-price {
+    font-weight: bold;
+}
+
+.item-description {
+    color: gray;
+    font-size: 14px;
+}

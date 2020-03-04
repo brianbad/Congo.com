@@ -1,6 +1,6 @@
 <app-nav-bar></app-nav-bar>
 <div *ngIf="authService.getLoggedInUser()">
-    <mat-card style="margin: 10px;">
+    <mat-card>
         <h2>Account Details</h2>
         <form [formGroup]="accountDetailsForm">
             <mat-form-field>
@@ -12,10 +12,10 @@
                 <mat-label>Last Name</mat-label>
                 <input matInput formControlName="lastName" [(ngModel)]="authService.getLoggedInUser().lastName" required>
             </mat-form-field>
-            <br>
+            &nbsp;
             <mat-form-field>
                 <mat-label>Username</mat-label>
-                <input matInput formControlName="username">
+                <input matInput formControlName="username" [(ngModel)]="authService.getLoggedInUser().username">
             </mat-form-field>
             &nbsp;
             <mat-form-field>
@@ -28,5 +28,17 @@
                 <span *ngIf="!loading">Save</span>
             </button>
         </form>
+    </mat-card>
+
+    <mat-card *ngIf="myListings ? true : loadMyListings()">
+        <h2>My Listings</h2>
+        <div class="items-container">
+            <mat-card *ngFor="let item of myListings" class="item-listing-card">
+                <div class="item-image-wrapper"><img src="../../../assets/images/items/{{item.filename}}"/></div>
+                <div>{{ item.itemName }}</div>
+                <div class="item-price">${{ item.itemPrice }}</div>
+                <p class="item-description">{{ item.itemDescription }}</p>
+            </mat-card>
+        </div>
     </mat-card>
 </div>

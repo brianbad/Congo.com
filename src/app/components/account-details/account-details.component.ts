@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AuthenticationService } from '../../services/authentication.service';
+import { ItemsService } from '../../services/items.service';
 import { UsersService } from '../../services/users.service';
 
 @Component({
@@ -13,9 +14,12 @@ import { UsersService } from '../../services/users.service';
 export class AccountDetailsComponent implements OnInit {
   private loading: Boolean = false;
 
+  private myListings;
+
   private accountDetailsForm: FormGroup;
 
   constructor(private authService: AuthenticationService,
+              private itemsService: ItemsService,
               private userService: UsersService,
               private _snackBar: MatSnackBar) { }
 
@@ -26,6 +30,12 @@ export class AccountDetailsComponent implements OnInit {
       username: new FormControl({value: '', disabled: true}),
       email: new FormControl('', Validators.compose([Validators.email, Validators.required]))
     });
+  }
+
+  loadMyListings() {
+    this.itemsService.getItemsBySeller(this.authService.getLoggedInUser().username).subscribe((data) => {
+      this.myListings = data;
+    })
   }
 
   updateAccountDetails() {

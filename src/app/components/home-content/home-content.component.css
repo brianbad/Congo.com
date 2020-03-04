@@ -1,10 +1,11 @@
-.mat-card {
+.item-listing-card {
     min-width: 300px;
     width: 24%;
     margin: 0.5%;
+    text-align: center;
 }
 
-.mat-card:hover {
+.item-listing-card:hover {
     cursor: pointer;
 }
 

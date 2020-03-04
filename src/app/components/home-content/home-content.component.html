@@ -2,7 +2,7 @@
     <h2 *ngIf="authService.getLoggedInUser()">Top picks for {{ authService.getLoggedInUser().firstName }}</h2>
 
     <div *ngIf="itemService.getItems()" class="items-container">
-        <mat-card *ngFor="let item of itemService.getItems()">
+        <mat-card *ngFor="let item of itemService.getItems()" class="item-listing-card">
             <div class="item-image-wrapper"><img src="../../../assets/images/items/{{item.filename}}"/></div>
             <div>{{ item.itemName }}</div>
             <div class="item-price">${{ item.itemPrice }}</div>
