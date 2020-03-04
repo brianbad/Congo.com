@@ -4,9 +4,12 @@ import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 
 import { MatSidenav } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 import { AuthenticationService } from '../../services/authentication.service';
 import { ItemsService } from '../../services/items.service';
+
+import { DialogSellItemComponent } from '../dialog-sell-item/dialog-sell-item.component';
 
 @Component({
   selector: 'app-nav-bar',
@@ -21,10 +24,18 @@ export class NavBarComponent implements OnInit {
   constructor(private cookieService: CookieService,
               private authService: AuthenticationService,
               private itemsService: ItemsService,
-              private router: Router) { }
+              private router: Router,
+              public sellItemDialog: MatDialog) { }
 
   ngOnInit() { 
     this.authService.getUserFromToken();
+  }
+
+  /**
+   * Open the sell item dialog window.
+   */
+  openSellItemDialog() {
+    const dialogRef = this.sellItemDialog.open(DialogSellItemComponent);
   }
 
   /**

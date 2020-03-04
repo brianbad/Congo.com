@@ -9,21 +9,27 @@
 
         <!-- Search Bar -->
         <div class="search-wrapper">
-            <input type="text" #searchTerm class="search-input search-component" placeholder="Search not implemented"/>
+            <input type="text" #searchTerm class="search-input search-component" placeholder="Search for a product..."/>
             <button mat-raised-button color="primary" class="search-button search-component" (click)="searchItems(searchTerm.value)"><mat-icon>search</mat-icon></button>
         </div>
     </span>
     <span class="nav-right-content">
+        <!-- Sell button -->
+        <button mat-button *ngIf="authService.getLoggedInUser()" (click)="openSellItemDialog()" title="Sell An Item">
+            <span class="navbar-button-content">
+                <mat-icon>attach_money</mat-icon>
+            </span>
+        </button>
+
         <!-- Cart Button -->
-        <button mat-button *ngIf="authService.getLoggedInUser()">
+        <button mat-button *ngIf="authService.getLoggedInUser()" title="My Cart">
             <span class="navbar-button-content">
                 <mat-icon>shopping_cart</mat-icon>
-                My Cart
             </span>
         </button>
 
         <!-- Account Button -->
-        <button mat-button *ngIf="!authService.getLoggedInUser()" (click)="toLogin()">
+        <button mat-button *ngIf="!authService.getLoggedInUser()" (click)="toLogin()" title="Log In">
             <span class="navbar-button-content">Log In</span>
         </button>
         <button mat-button *ngIf="authService.getLoggedInUser()" [matMenuTriggerFor]="accountMenu">

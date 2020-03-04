@@ -15,9 +15,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule, MatButtonModule, MatMenuModule, MatFormFieldModule, 
          MatInputModule, MatSnackBarModule, MatCardModule,
-         MatProgressSpinnerModule, MatSidenavModule } from '@angular/material';
+         MatProgressSpinnerModule, MatSidenavModule, MatDialogModule, MatDialog } from '@angular/material';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { HomeContentComponent } from './components/home-content/home-content.component';
+import { DialogSellItemComponent } from './components/dialog-sell-item/dialog-sell-item.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,11 @@ import { HomeContentComponent } from './components/home-content/home-content.com
     NavBarComponent,
     AccountDetailsComponent,
     SideBarComponent,
-    HomeContentComponent
+    HomeContentComponent,
+    DialogSellItemComponent
+  ],
+  entryComponents: [
+    DialogSellItemComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +49,8 @@ import { HomeContentComponent } from './components/home-content/home-content.com
     MatSnackBarModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatDialogModule
   ],
   providers: [
     CookieService

@@ -18,4 +18,8 @@ export class HomeContentComponent implements OnInit {
     this.itemService.getAllItems();
   }
 
+  sortItems(e) {
+    this.itemService.sortItems(e.target.value);
+  }
+
 }

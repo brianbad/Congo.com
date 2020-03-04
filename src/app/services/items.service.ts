@@ -28,11 +28,36 @@ export class ItemsService {
     })
   }
 
+  createItem(body) {
+    this.setHeaders();
+    return this.http.post(this.API_BASE_URL + "/items/create", body, { headers: this.headers });
+  }
+
   searchItems(searchTerm) {
     this.setHeaders();
     this.http.get(this.API_BASE_URL + "/items/search?query=" + searchTerm, { headers: this.headers }).subscribe((data) => {
       this.setItems(data);
     })
+  }
+
+  sortItems(property) {
+    this.setItems(this.getItems().sort(this.dynamicSort(property)));
+  }
+
+  /**
+   * Sorts JSON based on specific Key, and Asc or Desc
+   * @param property 
+   */
+  dynamicSort(property) {
+    var sortOrder = 1;
+    if(property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+    }
+    return function (a,b) {
+        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        return result * sortOrder;
+    }
   }
 
   getItems() {

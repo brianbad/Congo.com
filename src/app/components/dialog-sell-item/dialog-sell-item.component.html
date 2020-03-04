@@ -1,0 +1,24 @@
+<h2>Post an Item for sale!</h2>
+<form [formGroup]="newItemForm">
+    <mat-form-field>
+        <mat-label>Item Name</mat-label>
+        <input matInput formControlName="itemName" required/>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field>
+        <mat-label>Item Price</mat-label>
+        <input matInput formControlName="itemPrice" required/>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>Item Description</mat-label>
+        <input matInput formControlName="itemDescription" required/>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>Image File Name</mat-label>
+        <input matInput formControlName="imageFilename" required/>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" (click)="confirmSellItem($event)">Post Item</button>
+</form>

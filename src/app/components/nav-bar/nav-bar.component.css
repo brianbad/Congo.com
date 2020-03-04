@@ -17,6 +17,10 @@
     font-weight: bold;
 }
 
+.navbar-button-content > mat-icon {
+    margin: auto;
+}
+
 .nav-left-content, .nav-right-content {
     display: flex;
 }
