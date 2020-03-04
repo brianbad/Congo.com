@@ -5,13 +5,13 @@
 
         <!-- Search Bar -->
         <div class="search-wrapper">
-            <input type="text" class="search-input search-component" placeholder="Search not implemented"/>
-            <button mat-raised-button color="primary" class="search-button search-component"><mat-icon>search</mat-icon></button>
+            <input type="text" #searchTerm class="search-input search-component" placeholder="Search not implemented"/>
+            <button mat-raised-button color="primary" class="search-button search-component" (click)="searchItems(searchTerm.value)"><mat-icon>search</mat-icon></button>
         </div>
     </span>
     <span class="nav-right-content">
         <!-- Cart Button -->
-        <button mat-button *ngIf="loggedInUser">
+        <button mat-button *ngIf="authService.getLoggedInUser()">
             <span class="navbar-button-content">
                 <mat-icon>shopping_cart</mat-icon>
                 My Cart
@@ -19,12 +19,12 @@
         </button>
 
         <!-- Account Button -->
-        <button mat-button *ngIf="!loggedInUser" (click)="toLogin()">
+        <button mat-button *ngIf="!authService.getLoggedInUser()" (click)="toLogin()">
             <span class="navbar-button-content">Log In</span>
         </button>
-        <button mat-button *ngIf="loggedInUser" [matMenuTriggerFor]="accountMenu">
+        <button mat-button *ngIf="authService.getLoggedInUser()" [matMenuTriggerFor]="accountMenu">
             <span class="navbar-button-content">
-                Hello, {{ loggedInUser.firstName }}
+                Hello, {{ authService.getLoggedInUser().firstName }}
                 <mat-icon>keyboard_arrow_down</mat-icon>
             </span>
         </button>

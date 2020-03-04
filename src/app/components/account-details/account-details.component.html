@@ -5,22 +5,22 @@
         <form [formGroup]="accountDetailsForm">
             <mat-form-field>
                 <mat-label>First Name</mat-label>
-                <input matInput formControlName="firstName" value="{{loggedInUser.firstName}}" required>
+                <input matInput formControlName="firstName" value="{{authService.getLoggedInUser().firstName}}" required>
             </mat-form-field>
             &nbsp;
             <mat-form-field>
                 <mat-label>Last Name</mat-label>
-                <input matInput formControlName="lastName" value="{{loggedInUser.lastName}}" required>
+                <input matInput formControlName="lastName" value="{{authService.getLoggedInUser().lastName}}" required>
             </mat-form-field>
             <br>
             <mat-form-field>
                 <mat-label>Username</mat-label>
-                <input matInput formControlName="username" value="{{loggedInUser.username}}">
+                <input matInput formControlName="username" value="{{authService.getLoggedInUser().username}}">
             </mat-form-field>
             &nbsp;
             <mat-form-field>
                 <mat-label>Email</mat-label>
-                <input matInput formControlName="email" value="{{loggedInUser.email}}" required>
+                <input matInput formControlName="email" value="{{authService.getLoggedInUser().email}}" required>
             </mat-form-field>
             <br>
             <button mat-raised-button color="primary" (click)="updateAccountDetails()">

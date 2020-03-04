@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+
 import { AuthenticationService } from '../../services/authentication.service';
+import { ItemsService } from '../../services/items.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,20 +12,20 @@ import { AuthenticationService } from '../../services/authentication.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-  private loggedInUser;
 
   constructor(private cookieService: CookieService,
               private authService: AuthenticationService,
+              private itemsService: ItemsService,
               private router: Router) { }
 
+  ngOnInit() { }
+
   /**
-   * On initialization...
-   * - Retrieve the logged in user.
+   * Send the search term to the item service for query.
+   * @param searchTerm 
    */
-  ngOnInit() {
-    this.authService.getUserFromToken().subscribe((data) => {
-      this.loggedInUser = data;
-    });
+  searchItems(searchTerm) {
+    this.itemsService.searchItems(searchTerm);
   }
 
   /**
@@ -30,7 +33,7 @@ export class NavBarComponent implements OnInit {
    */
   logout() {
     this.cookieService.delete('CONGO_JWT');
-    this.loggedInUser = undefined;
+    this.authService.setLoggedInUser(undefined);
   }
 
   /**

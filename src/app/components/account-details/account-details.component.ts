@@ -11,7 +11,6 @@ import { UsersService } from '../../services/users.service';
   styleUrls: ['./account-details.component.css']
 })
 export class AccountDetailsComponent implements OnInit {
-  private loggedInUser;
   private loading: Boolean = false;
 
   private accountDetailsForm: FormGroup;
@@ -21,14 +20,11 @@ export class AccountDetailsComponent implements OnInit {
               private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    this.authService.getUserFromToken().subscribe((data) => {
-      this.loggedInUser = data;
-      this.accountDetailsForm = new FormGroup({
-        firstName: new FormControl(this.loggedInUser.firstName, Validators.required),
-        lastName: new FormControl(this.loggedInUser.lastName, Validators.required),
-        username: new FormControl({value: this.loggedInUser.username, disabled: true}),
-        email: new FormControl(this.loggedInUser.email, Validators.compose([Validators.email, Validators.required]))
-      });
+    this.accountDetailsForm = new FormGroup({
+      firstName: new FormControl(this.authService.getLoggedInUser().firstName, Validators.required),
+      lastName: new FormControl(this.authService.getLoggedInUser().lastName, Validators.required),
+      username: new FormControl({value: this.authService.getLoggedInUser().username, disabled: true}),
+      email: new FormControl(this.authService.getLoggedInUser().email, Validators.compose([Validators.email, Validators.required]))
     });
   }
 
@@ -40,7 +36,7 @@ export class AccountDetailsComponent implements OnInit {
       // Deleting the username field since users are not currently allowed to change their username.
       delete body['username'];
     
-      this.userService.updateUser(this.loggedInUser.username, body).subscribe((data) => {
+      this.userService.updateUser(this.authService.getLoggedInUser().username, body).subscribe((data) => {
         this.loading = false;
         this._snackBar.open(data.message, null, {
           duration: 2000

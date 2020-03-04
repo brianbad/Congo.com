@@ -11,17 +11,30 @@ export class AuthenticationService {
   private API_BASE_URL: string = environment.apiBaseUrl;
   private headers: HttpHeaders;
 
+  private loggedInUser;
+
   constructor(private http: HttpClient,
-              private cookieService: CookieService) { }
+              private cookieService: CookieService) { 
+  }
 
   login(body):Observable<any> {
     this.setHeaders();
     return this.http.post(this.API_BASE_URL + "/login", body);
   }
 
-  getUserFromToken():Observable<any> {
+  getUserFromToken() {
     this.setHeaders();
-    return this.http.get(this.API_BASE_URL + "/getUserFromToken", { headers: this.headers });
+    this.http.get(this.API_BASE_URL + "/getUserFromToken", { headers: this.headers }).subscribe((data) => {
+      this.setLoggedInUser(data);
+    })
+  }
+
+  getLoggedInUser() {
+    return this.loggedInUser;
+  }
+
+  setLoggedInUser(user) {
+    this.loggedInUser = user;
   }
 
   setHeaders() {

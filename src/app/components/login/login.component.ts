@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   loginForm;
 
   constructor(private formBuilder: FormBuilder,
-              private authenticationService: AuthenticationService,
+              private authService: AuthenticationService,
               private router: Router,
               private cookieService: CookieService ) {
     this.loginForm = this.formBuilder.group({
@@ -26,13 +26,13 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.authenticationService.login(this.loginForm.value).subscribe((data) => {
+    this.authService.login(this.loginForm.value).subscribe((data) => {
       this.cookieService.set('CONGO_JWT', data.token)
+      this.authService.getUserFromToken();
       this.router.navigateByUrl("/home");
     },
     (error) => {
       alert(error.error.message);
-      console.log(error);
     });
   }
 
