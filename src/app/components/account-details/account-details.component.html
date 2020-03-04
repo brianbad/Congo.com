@@ -1,26 +1,32 @@
 <app-nav-bar></app-nav-bar>
 <div *ngIf="loggedInUser">
-    <form [formGroup]="accountDetailsForm">
-        <mat-form-field>
-            <mat-label>First Name</mat-label>
-            <input matInput formControlName="firstName" value="{{loggedInUser.firstName}}">
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <mat-label>Last Name</mat-label>
-            <input matInput formControlName="lastName" value="{{loggedInUser.lastName}}">
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <mat-label>Username</mat-label>
-            <input matInput formControlName="username" value="{{loggedInUser.username}}">
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <mat-label>Email</mat-label>
-            <input matInput formControlName="email" value="{{loggedInUser.email}}">
-        </mat-form-field>
-        <br>
-        <button mat-raised-button color="primary" (click)="updateAccountDetails()">Save</button>
-    </form>
+    <mat-card style="margin: 10px;">
+        <h2>Account Details</h2>
+        <form [formGroup]="accountDetailsForm">
+            <mat-form-field>
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="firstName" value="{{loggedInUser.firstName}}" required>
+            </mat-form-field>
+            &nbsp;
+            <mat-form-field>
+                <mat-label>Last Name</mat-label>
+                <input matInput formControlName="lastName" value="{{loggedInUser.lastName}}" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Username</mat-label>
+                <input matInput formControlName="username" value="{{loggedInUser.username}}">
+            </mat-form-field>
+            &nbsp;
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" value="{{loggedInUser.email}}" required>
+            </mat-form-field>
+            <br>
+            <button mat-raised-button color="primary" (click)="updateAccountDetails()">
+                <mat-icon *ngIf="loading"><mat-spinner color="accent" diameter="20"></mat-spinner></mat-icon>
+                <span *ngIf="!loading">Save</span>
+            </button>
+        </form>
+    </mat-card>
 </div>

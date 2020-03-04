@@ -1,1 +1,14 @@
-<app-nav-bar></app-nav-bar>
+<div>
+    <mat-sidenav-container fullscreen>
+        <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+            <app-side-bar></app-side-bar>
+        </mat-sidenav>
+        
+        <mat-sidenav-content>
+            <app-nav-bar></app-nav-bar>
+            <button *ngIf="opened" mat-button class="sidenav-toggle" (click)="sidenav.toggle()"><mat-icon>close</mat-icon></button>
+            <button *ngIf="!opened" mat-button class="sidenav-toggle" (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+            <app-home-content></app-home-content>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

@@ -6,3 +6,8 @@ th, td {
     text-align: left;
     padding: 5px;
 }
+
+.mat-sidenav-content > .sidenav-toggle {
+    min-width: 0px;
+    padding: 0px;
+}

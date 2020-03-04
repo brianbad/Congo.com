@@ -1,0 +1,10 @@
+.sidenav-title {
+    padding: 10px;
+    font-weight: bold;
+}
+
+.mat-button {
+    width: 100%;
+    text-align: left;
+    border-radius: 0px;
+}

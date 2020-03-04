@@ -1,0 +1,12 @@
+<div style="margin-left: 10px;">
+    <h2 *ngIf="loggedInUser">Top picks for {{ loggedInUser.firstName }}</h2>
+
+    <div *ngIf="items" class="items-container">
+        <mat-card *ngFor="let item of items">
+            <div class="item-image-wrapper"><img src="../../../assets/images/items/{{item.filename}}"/></div>
+            <div>{{ item.itemName }}</div>
+            <div class="item-price">${{ item.itemPrice }}</div>
+            <p class="item-description">{{ item.itemDescription }}</p>
+        </mat-card>
+    </div>
+</div>

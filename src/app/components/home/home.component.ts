@@ -9,6 +9,7 @@ import { AuthenticationService } from "../../services/authentication.service";
 })
 export class HomeComponent implements OnInit {
   private loggedInUser: User;
+  opened: boolean = false;
 
   constructor(private usersServices: UsersService,
               private authenticationServices: AuthenticationService) {

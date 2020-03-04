@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AuthenticationService } from '../../services/authentication.service';
@@ -12,6 +12,7 @@ import { UsersService } from '../../services/users.service';
 })
 export class AccountDetailsComponent implements OnInit {
   private loggedInUser;
+  private loading: Boolean = false;
 
   private accountDetailsForm: FormGroup;
 
@@ -23,24 +24,29 @@ export class AccountDetailsComponent implements OnInit {
     this.authService.getUserFromToken().subscribe((data) => {
       this.loggedInUser = data;
       this.accountDetailsForm = new FormGroup({
-        firstName: new FormControl(this.loggedInUser.firstName),
-        lastName: new FormControl(this.loggedInUser.lastName),
+        firstName: new FormControl(this.loggedInUser.firstName, Validators.required),
+        lastName: new FormControl(this.loggedInUser.lastName, Validators.required),
         username: new FormControl({value: this.loggedInUser.username, disabled: true}),
-        email: new FormControl(this.loggedInUser.email)
+        email: new FormControl(this.loggedInUser.email, Validators.compose([Validators.email, Validators.required]))
       });
     });
   }
 
   updateAccountDetails() {
-    let body = this.accountDetailsForm.value;
-    // Deleting the username field since users are not currently allowed to change their username.
-    delete body['username'];
+    if (this.accountDetailsForm.valid) {
+      this.loading = true;
 
-    this.userService.updateUser(this.loggedInUser.username, body).subscribe((data) => {
-      this._snackBar.open(data.message, null, {
-        duration: 2000
-      });
-    })
+      let body = this.accountDetailsForm.value;
+      // Deleting the username field since users are not currently allowed to change their username.
+      delete body['username'];
+    
+      this.userService.updateUser(this.loggedInUser.username, body).subscribe((data) => {
+        this.loading = false;
+        this._snackBar.open(data.message, null, {
+          duration: 2000
+        });
+      })
+    }
   }
 
 }

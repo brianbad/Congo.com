@@ -6,14 +6,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { AccountDetailsComponent } from './components/account-details/account-details.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatIconModule, MatButtonModule, MatMenuModule, MatFormFieldModule, MatInputModule, MatSnackBarModule } from '@angular/material';
-import { AccountDetailsComponent } from './components/account-details/account-details.component';
+import { MatIconModule, MatButtonModule, MatMenuModule, MatFormFieldModule, 
+         MatInputModule, MatSnackBarModule, MatCardModule,
+         MatProgressSpinnerModule, MatSidenavModule } from '@angular/material';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { HomeContentComponent } from './components/home-content/home-content.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,9 @@ import { AccountDetailsComponent } from './components/account-details/account-de
     LoginComponent,
     HomeComponent,
     NavBarComponent,
-    AccountDetailsComponent
+    AccountDetailsComponent,
+    SideBarComponent,
+    HomeContentComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +41,10 @@ import { AccountDetailsComponent } from './components/account-details/account-de
     MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatSidenavModule
   ],
   providers: [
     CookieService
