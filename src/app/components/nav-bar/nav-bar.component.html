@@ -1,5 +1,9 @@
 <div class="nav-bar">
     <span class="nav-left-content">
+        <!-- Sidenav menu controls -->
+        <button *ngIf="sidenavOpened" mat-button class="sidenav-toggle" (click)="sidenav.toggle()"><mat-icon>close</mat-icon></button>
+        <button *ngIf="!sidenavOpened" mat-button class="sidenav-toggle" (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+        
         <!-- Main logo -->
         <img src="../../assets/images/site/nav_logo.png" class="nav-bar-title" (click)="toHome()">
 

@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+
+import { MatSidenav } from '@angular/material';
 
 import { AuthenticationService } from '../../services/authentication.service';
 import { ItemsService } from '../../services/items.service';
@@ -11,7 +13,10 @@ import { ItemsService } from '../../services/items.service';
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
+
 export class NavBarComponent implements OnInit {
+  @Input() sidenav: MatSidenav
+  @Input() sidenavOpened: Boolean;
 
   constructor(private cookieService: CookieService,
               private authService: AuthenticationService,

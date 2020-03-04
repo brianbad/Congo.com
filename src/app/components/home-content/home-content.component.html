@@ -1,4 +1,5 @@
 <div>
+    <img src="../../../assets/images/site/backdrop.jpg" style="width: 100%;"/>
     <h2 *ngIf="authService.getLoggedInUser()">Top picks for {{ authService.getLoggedInUser().firstName }}</h2>
 
     <div *ngIf="itemService.getItems()" class="items-container">

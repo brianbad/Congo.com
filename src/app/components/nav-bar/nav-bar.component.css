@@ -22,6 +22,12 @@
 }
 
 /** -- **/
+.sidenav-toggle {
+    padding: 0px;
+    min-width: 20px;
+}
+
+/** -- **/
 
 .search-wrapper {
     display: flex;
