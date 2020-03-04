@@ -8,18 +8,18 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class UsersService {
-  private API_BASE_URL: string = environment.apiBaseUrl;
+  private API_BASE_URL: String = environment.apiBaseUrl;
   private headers: HttpHeaders;
 
   constructor(private http: HttpClient,
               private cookieService: CookieService) { }
 
-  getUser(username: string):Observable<any> {
+  getUser(username: String):Observable<any> {
     this.setHeaders();
     return this.http.get(this.API_BASE_URL + "/users/" + username, { headers: this.headers })
   }
 
-  updateUser(username: string, body: object):Observable<any> {
+  updateUser(username: String, body: object):Observable<any> {
     this.setHeaders();
     return this.http.put(this.API_BASE_URL + "/users/update/" + username, body, { headers: this.headers })
   }

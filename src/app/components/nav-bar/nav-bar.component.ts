@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
@@ -10,6 +10,8 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { ItemsService } from '../../services/items.service';
 
 import { DialogSellItemComponent } from '../dialog-sell-item/dialog-sell-item.component';
+import { DialogLoginComponent } from '../dialog-login/dialog-login.component';
+import { EventEmitter } from 'events';
 
 @Component({
   selector: 'app-nav-bar',
@@ -21,11 +23,14 @@ export class NavBarComponent implements OnInit {
   @Input() sidenav: MatSidenav
   @Input() sidenavOpened: Boolean;
 
+  @Output() currentUserChanged: EventEmitter = new EventEmitter();
+
   constructor(private cookieService: CookieService,
               private authService: AuthenticationService,
               private itemsService: ItemsService,
               private router: Router,
-              public sellItemDialog: MatDialog) { }
+              public sellItemDialog: MatDialog,
+              public loginDialog: MatDialog) { }
 
   ngOnInit() { 
     this.authService.getUserFromToken();
@@ -36,6 +41,16 @@ export class NavBarComponent implements OnInit {
    */
   openSellItemDialog() {
     const dialogRef = this.sellItemDialog.open(DialogSellItemComponent);
+  }
+
+  /**
+   * Open the login dialog window.
+   */
+  openLoginDialog() {
+    const dialogRef = this.loginDialog.open(DialogLoginComponent);
+    dialogRef.afterClosed().subscribe((then) => {
+      this.currentUserChanged.emit("true");
+    });
   }
 
   /**
@@ -53,13 +68,6 @@ export class NavBarComponent implements OnInit {
   logout() {
     this.cookieService.delete('CONGO_JWT');
     this.authService.setLoggedInUser(undefined);
-  }
-
-  /**
-   * Redirect to the login screen.
-   */
-  toLogin() {
-    this.router.navigateByUrl("/login");
   }
 
   /**

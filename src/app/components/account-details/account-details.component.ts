@@ -14,8 +14,6 @@ import { UsersService } from '../../services/users.service';
 export class AccountDetailsComponent implements OnInit {
   private loading: Boolean = false;
 
-  private myListings;
-
   private accountDetailsForm: FormGroup;
 
   constructor(private authService: AuthenticationService,
@@ -30,12 +28,6 @@ export class AccountDetailsComponent implements OnInit {
       username: new FormControl({value: '', disabled: true}),
       email: new FormControl('', Validators.compose([Validators.email, Validators.required]))
     });
-  }
-
-  loadMyListings() {
-    this.itemsService.getItemsBySeller(this.authService.getLoggedInUser().username).subscribe((data) => {
-      this.myListings = data;
-    })
   }
 
   updateAccountDetails() {

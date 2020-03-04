@@ -11,7 +11,7 @@ export class AuthenticationService {
   private API_BASE_URL: string = environment.apiBaseUrl;
   private headers: HttpHeaders;
 
-  private loggedInUser;
+  public loggedInUser;
 
   constructor(private http: HttpClient,
               private cookieService: CookieService) { 

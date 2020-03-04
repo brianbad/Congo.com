@@ -9,12 +9,16 @@ import { ItemsService } from '../../services/items.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  private popularItems;
 
   constructor(private authService: AuthenticationService,
               private itemService: ItemsService) { }
 
   ngOnInit() {
     this.authService.getUserFromToken();
+    this.itemService.getPopularItems().subscribe((data) => {
+      this.popularItems = data;
+    })
   }
 
 }

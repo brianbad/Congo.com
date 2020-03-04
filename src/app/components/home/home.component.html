@@ -1,5 +1,16 @@
-<div>
+<div class="backdrop-container">
     <img src="../../../assets/images/site/backdrop.jpg" style="width: 100%;"/>
-
-    <h3 *ngIf="authService.getLoggedInUser()">Welcome back, {{ authService.getLoggedInUser().firstName }}</h3>
+    <h1 *ngIf="authService.getLoggedInUser()" class="centered">Welcome back, {{ authService.getLoggedInUser().firstName }}</h1>
+    <h1 *ngIf="!authService.getLoggedInUser()" class="centered">Congo has what you need</h1>
+</div>
+<div *ngIf="popularItems">
+    <h2>Popular Right Now</h2>
+    <div class="items-container">
+        <mat-card *ngFor="let item of popularItems" class="item-listing-card">
+            <div class="item-image-wrapper"><img src="../../../assets/images/items/{{item.filename}}"/></div>
+            <div>{{ item.itemName }}</div>
+            <div class="item-price">${{ item.itemPrice }}</div>
+            <p class="item-description">{{ item.itemDescription }}</p>
+        </mat-card>
+    </div>
 </div>

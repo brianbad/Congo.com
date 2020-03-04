@@ -29,7 +29,7 @@
         </button>
 
         <!-- Account Button -->
-        <button mat-button *ngIf="!authService.getLoggedInUser()" (click)="toLogin()" title="Log In">
+        <button mat-button *ngIf="!authService.getLoggedInUser()" (click)="openLoginDialog()" title="Log In">
             <span class="navbar-button-content">Log In</span>
         </button>
         <button mat-button *ngIf="authService.getLoggedInUser()" [matMenuTriggerFor]="accountMenu">

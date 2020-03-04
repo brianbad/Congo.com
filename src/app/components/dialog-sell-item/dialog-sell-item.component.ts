@@ -26,8 +26,7 @@ export class DialogSellItemComponent implements OnInit {
     })
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   confirmSellItem(e) {
     if (this.newItemForm.valid) {
@@ -35,7 +34,9 @@ export class DialogSellItemComponent implements OnInit {
       body["seller"] = this.authService.getLoggedInUser().username;
 
       this.itemsService.createItem(body).subscribe((data) => {
-        this.itemsService.getAllItems();
+        if (this.itemsService.getLastSearchTerm()) {
+          this.itemsService.searchItems(this.itemsService.getLastSearchTerm());
+        }
         this.dialogRef.close();
       })
     }

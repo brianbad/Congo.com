@@ -29,10 +29,10 @@
         </form>
     </mat-card>
 
-    <mat-card *ngIf="myListings ? true : loadMyListings()">
+    <mat-card>
         <h2>My Listings</h2>
         <div class="items-container">
-            <mat-card *ngFor="let item of myListings" class="item-listing-card">
+            <mat-card *ngFor="let item of authService.getLoggedInUser().listings" class="item-listing-card">
                 <div class="item-image-wrapper"><img src="../../../assets/images/items/{{item.filename}}"/></div>
                 <div>{{ item.itemName }}</div>
                 <div class="item-price">${{ item.itemPrice }}</div>

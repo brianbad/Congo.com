@@ -4,7 +4,6 @@ import { CookieService } from 'ngx-cookie-service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { AccountDetailsComponent } from './components/account-details/account-details.component';
@@ -19,20 +18,22 @@ import { MatIconModule, MatButtonModule, MatMenuModule, MatFormFieldModule,
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { DialogSellItemComponent } from './components/dialog-sell-item/dialog-sell-item.component';
 import { SearchComponent } from './components/search/search.component';
+import { DialogLoginComponent } from './components/dialog-login/dialog-login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     HomeComponent,
     NavBarComponent,
     AccountDetailsComponent,
     SideBarComponent,
     DialogSellItemComponent,
-    SearchComponent
+    SearchComponent,
+    DialogLoginComponent
   ],
   entryComponents: [
-    DialogSellItemComponent
+    DialogSellItemComponent,
+    DialogLoginComponent
   ],
   imports: [
     BrowserModule,
