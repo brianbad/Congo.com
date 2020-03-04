@@ -1,26 +1,26 @@
 <app-nav-bar></app-nav-bar>
-<div *ngIf="loggedInUser">
+<div *ngIf="authService.getLoggedInUser()">
     <mat-card style="margin: 10px;">
         <h2>Account Details</h2>
         <form [formGroup]="accountDetailsForm">
             <mat-form-field>
                 <mat-label>First Name</mat-label>
-                <input matInput formControlName="firstName" value="{{authService.getLoggedInUser().firstName}}" required>
+                <input matInput formControlName="firstName" [(ngModel)]="authService.getLoggedInUser().firstName" required>
             </mat-form-field>
             &nbsp;
             <mat-form-field>
                 <mat-label>Last Name</mat-label>
-                <input matInput formControlName="lastName" value="{{authService.getLoggedInUser().lastName}}" required>
+                <input matInput formControlName="lastName" [(ngModel)]="authService.getLoggedInUser().lastName" required>
             </mat-form-field>
             <br>
             <mat-form-field>
                 <mat-label>Username</mat-label>
-                <input matInput formControlName="username" value="{{authService.getLoggedInUser().username}}">
+                <input matInput formControlName="username">
             </mat-form-field>
             &nbsp;
             <mat-form-field>
                 <mat-label>Email</mat-label>
-                <input matInput formControlName="email" value="{{authService.getLoggedInUser().email}}" required>
+                <input matInput formControlName="email" [(ngModel)]="authService.getLoggedInUser().email" required>
             </mat-form-field>
             <br>
             <button mat-raised-button color="primary" (click)="updateAccountDetails()">

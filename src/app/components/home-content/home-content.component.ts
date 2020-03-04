@@ -14,6 +14,7 @@ export class HomeContentComponent implements OnInit {
               private itemService: ItemsService) { }
 
   ngOnInit() {
+    this.authService.getUserFromToken();
     this.itemService.getAllItems();
   }
 

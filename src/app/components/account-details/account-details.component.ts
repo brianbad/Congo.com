@@ -21,10 +21,10 @@ export class AccountDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.accountDetailsForm = new FormGroup({
-      firstName: new FormControl(this.authService.getLoggedInUser().firstName, Validators.required),
-      lastName: new FormControl(this.authService.getLoggedInUser().lastName, Validators.required),
-      username: new FormControl({value: this.authService.getLoggedInUser().username, disabled: true}),
-      email: new FormControl(this.authService.getLoggedInUser().email, Validators.compose([Validators.email, Validators.required]))
+      firstName: new FormControl('', Validators.required),
+      lastName: new FormControl('', Validators.required),
+      username: new FormControl({value: '', disabled: true}),
+      email: new FormControl('', Validators.compose([Validators.email, Validators.required]))
     });
   }
 

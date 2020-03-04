@@ -18,7 +18,9 @@ export class NavBarComponent implements OnInit {
               private itemsService: ItemsService,
               private router: Router) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.authService.getUserFromToken();
+  }
 
   /**
    * Send the search term to the item service for query.
