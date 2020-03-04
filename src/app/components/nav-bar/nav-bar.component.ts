@@ -43,6 +43,7 @@ export class NavBarComponent implements OnInit {
    * @param searchTerm 
    */
   searchItems(searchTerm) {
+    this.router.navigateByUrl("/search");
     this.itemsService.searchItems(searchTerm);
   }
 
@@ -72,7 +73,7 @@ export class NavBarComponent implements OnInit {
    * Redirect to the home screen.
    */
   toHome() {
-    this.router.navigateByUrl("/home");
+    this.router.navigateByUrl("");
   }
 
 }

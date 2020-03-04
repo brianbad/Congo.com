@@ -4,17 +4,21 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { ItemsService } from '../../services/items.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css']
 })
-export class HomeComponent implements OnInit {
+export class SearchComponent implements OnInit {
 
   constructor(private authService: AuthenticationService,
               private itemService: ItemsService) { }
 
   ngOnInit() {
     this.authService.getUserFromToken();
+  }
+
+  sortItems(e) {
+    this.itemService.sortItems(e.target.value);
   }
 
 }

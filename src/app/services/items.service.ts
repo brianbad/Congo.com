@@ -12,6 +12,7 @@ export class ItemsService {
   private headers: HttpHeaders;
 
   private items;
+  private lastSearchTerm;
 
   constructor(private http: HttpClient,
               private cookieService: CookieService) { }
@@ -36,6 +37,7 @@ export class ItemsService {
   searchItems(searchTerm) {
     this.setHeaders();
     this.http.get(this.API_BASE_URL + "/items/search?query=" + searchTerm, { headers: this.headers }).subscribe((data) => {
+      this.lastSearchTerm = searchTerm;
       this.setItems(data);
     })
   }
@@ -66,6 +68,14 @@ export class ItemsService {
 
   setItems(data) {
     this.items = data;
+  }
+
+  getLastSearchTerm() {
+    return this.lastSearchTerm;
+  }
+
+  setLastSearchTerm(data) {
+    this.lastSearchTerm = data;
   }
 
   setHeaders() {

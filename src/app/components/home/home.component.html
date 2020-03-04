@@ -1,12 +1,5 @@
 <div>
-    <mat-sidenav-container fullscreen>
-        <mat-sidenav #sidenav mode="side" [(opened)]="sidenavOpened">
-            <app-side-bar></app-side-bar>
-        </mat-sidenav>
-        
-        <mat-sidenav-content>
-            <app-nav-bar [sidenav]="sidenav" [sidenavOpened]="sidenavOpened"></app-nav-bar>
-            <app-home-content></app-home-content>
-        </mat-sidenav-content>
-    </mat-sidenav-container>
+    <img src="../../../assets/images/site/backdrop.jpg" style="width: 100%;"/>
+
+    <h3 *ngIf="authService.getLoggedInUser()">Welcome back, {{ authService.getLoggedInUser().firstName }}</h3>
 </div>

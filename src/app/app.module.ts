@@ -17,8 +17,8 @@ import { MatIconModule, MatButtonModule, MatMenuModule, MatFormFieldModule,
          MatInputModule, MatSnackBarModule, MatCardModule,
          MatProgressSpinnerModule, MatSidenavModule, MatDialogModule, MatDialog } from '@angular/material';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
-import { HomeContentComponent } from './components/home-content/home-content.component';
 import { DialogSellItemComponent } from './components/dialog-sell-item/dialog-sell-item.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +28,8 @@ import { DialogSellItemComponent } from './components/dialog-sell-item/dialog-se
     NavBarComponent,
     AccountDetailsComponent,
     SideBarComponent,
-    HomeContentComponent,
-    DialogSellItemComponent
+    DialogSellItemComponent,
+    SearchComponent
   ],
   entryComponents: [
     DialogSellItemComponent

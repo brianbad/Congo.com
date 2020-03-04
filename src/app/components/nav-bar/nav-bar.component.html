@@ -9,8 +9,8 @@
 
         <!-- Search Bar -->
         <div class="search-wrapper">
-            <input type="text" #searchTerm class="search-input search-component" placeholder="Search for a product..."/>
-            <button mat-raised-button color="primary" class="search-button search-component" (click)="searchItems(searchTerm.value)"><mat-icon>search</mat-icon></button>
+            <input type="text" #searchTerm class="search-input search-component" placeholder="Search for a product..." (keyup.enter)="searchItems(searchTerm.value)"/>
+            <button mat-raised-button color="primary" class="search-button search-component" (click)="searchItems(searchTerm.value)" (keyup.enter)="searchItems(searchTerm.value)"><mat-icon>search</mat-icon></button>
         </div>
     </span>
     <span class="nav-right-content">
