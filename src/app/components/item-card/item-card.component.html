@@ -1,6 +1,12 @@
-<mat-card *ngIf="item" class="item-listing-card" (click)="openViewItemDialog()">
+<mat-card *ngIf="item" class="item-listing-card" (click)="toViewItem()">
     <div class="item-image-wrapper"><img src="../../../assets/images/items/{{item.filename}}"/></div>
-    <div>{{ item.itemName }}</div>
+    <div class="item-name">{{ item.itemName }}</div>
     <div class="item-price">${{ item.itemPrice }}</div>
+    <div style="display: flex; justify-content: center; margin: 10px;">
+        <mat-icon *ngFor="let w of [].constructor(this.ratingToStars(item.itemRating).wholeStars)">star</mat-icon>
+        <mat-icon *ngFor="let h of [].constructor(this.ratingToStars(item.itemRating).halfStars)">star_half</mat-icon>
+        <mat-icon *ngFor="let b of [].constructor(this.ratingToStars(item.itemRating).borderStars)">star_border</mat-icon>
+    </div>
+    <div>Seller - {{ item.seller }}</div>
     <p class="item-description">{{ item.itemDescription }}</p>
 </mat-card>

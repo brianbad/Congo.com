@@ -1,0 +1,32 @@
+<div class="content-container" *ngIf="item">
+    <div class="item-display">
+        <img src="../../../assets/images/items/{{item.filename}}" style="max-height: 300px;"/>
+        <p style="font-weight: bold; text-align: center;">{{item.itemName}}</p>
+        <span>
+            <mat-icon *ngFor="let w of [].constructor(this.ratingToStars(item.itemRating).wholeStars)">star</mat-icon>
+            <mat-icon *ngFor="let h of [].constructor(this.ratingToStars(item.itemRating).halfStars)">star_half</mat-icon>
+            <mat-icon *ngFor="let b of [].constructor(this.ratingToStars(item.itemRating).borderStars)">star_border</mat-icon>
+        </span>
+        <p style="font-weight: bold;">${{item.itemPrice}}</p>
+        <button mat-raised-button color="primary">Add To Cart</button><br>
+        <p>{{item.itemDescription}}</p>
+    </div>
+    <div *ngIf="itemReviews">
+        <h2>Reviews</h2>
+        <div *ngFor="let i of itemReviews">
+            <mat-card style="margin: 10px; background: rgb(240, 240, 240);">
+                <div style="display: flex; justify-content: flex-start;">
+                    <mat-icon color="primary" *ngFor="let w of [].constructor(this.ratingToStars(i.rating).wholeStars)">star</mat-icon>
+                    <mat-icon *ngFor="let h of [].constructor(this.ratingToStars(i.rating).halfStars)">star_half</mat-icon>
+                    <mat-icon *ngFor="let b of [].constructor(this.ratingToStars(i.rating).borderStars)">star_border</mat-icon>
+                </div>
+                <div style="display: flex;">
+                    <h3>{{i.username}} said...</h3>
+                </div>
+                <p>{{i.review}}</p>
+            </mat-card>
+        </div>
+        <div *ngIf="itemReviews.length === 0">No Reviews yet!</div>
+    </div>
+</div>
+    

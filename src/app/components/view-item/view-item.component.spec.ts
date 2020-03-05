@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DialogViewItemComponent } from './dialog-view-item.component';
+import { ViewItemComponent } from './view-item.component';
 
-describe('DialogViewItemComponent', () => {
-  let component: DialogViewItemComponent;
-  let fixture: ComponentFixture<DialogViewItemComponent>;
+describe('ViewItemComponent', () => {
+  let component: ViewItemComponent;
+  let fixture: ComponentFixture<ViewItemComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DialogViewItemComponent ]
+      declarations: [ ViewItemComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DialogViewItemComponent);
+    fixture = TestBed.createComponent(ViewItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

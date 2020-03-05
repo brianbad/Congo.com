@@ -1,3 +1,7 @@
+.mat-card {
+    margin: 10px;
+}
+
 app-item-card {
     min-width: 200px;
     width: 19%;

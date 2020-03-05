@@ -17,6 +17,16 @@ export class ItemsService {
   constructor(private http: HttpClient,
               private cookieService: CookieService) { }
 
+  getItemRating(itemId) {
+    this.setHeaders();
+    return this.http.get(this.API_BASE_URL + "/item/" + itemId + "/rating", { headers: this.headers });
+  }
+
+  getItemReviews(itemId) {
+    this.setHeaders();
+    return this.http.get(this.API_BASE_URL + "/item/" + itemId + "/reviews", { headers: this.headers });
+  }
+
   getItemsBySeller(username) {
     this.setHeaders();
     return this.http.get(this.API_BASE_URL + "/items/fromSeller/" + username, { headers: this.headers });
@@ -45,7 +55,6 @@ export class ItemsService {
   }
 
   searchItems(searchTerm) {
-    console.log(searchTerm);
     this.setHeaders();
     this.http.get(this.API_BASE_URL + "/items/search?query=" + searchTerm, { headers: this.headers }).subscribe((data) => {
       this.lastSearchTerm = searchTerm;
