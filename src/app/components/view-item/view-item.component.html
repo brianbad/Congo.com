@@ -6,12 +6,13 @@
                 <img src="../../../assets/images/items/{{item.filename}}" style="object-fit: contain; overflow: hidden;"/>
             </span>
             <span>
-                <p style="font-weight: bold;">{{item.itemName}}, ${{item.itemPrice}}</p>
+                <p style="margin-bottom: 0px;"><b>{{item.itemName}}</b></p>
                 <span style="display: flex; justify-content: flex-start;">
                     <mat-icon *ngFor="let w of [].constructor(this.ratingToStars(item.itemRating).wholeStars)">star</mat-icon>
                     <mat-icon *ngFor="let h of [].constructor(this.ratingToStars(item.itemRating).halfStars)">star_half</mat-icon>
                     <mat-icon *ngFor="let b of [].constructor(this.ratingToStars(item.itemRating).borderStars)">star_border</mat-icon>
                 </span>
+                <p>${{item.itemPrice}}</p>
                 <p>{{item.itemDescription}}</p>
                 <button mat-raised-button color="primary">Add To Cart</button>
             </span>
