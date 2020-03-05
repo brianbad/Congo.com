@@ -1,15 +1,21 @@
 <div class="content-container" *ngIf="item">
     <div class="item-display">
-        <img src="../../../assets/images/items/{{item.filename}}" style="max-height: 300px;"/>
-        <p style="font-weight: bold; text-align: center;">{{item.itemName}}</p>
-        <span>
-            <mat-icon *ngFor="let w of [].constructor(this.ratingToStars(item.itemRating).wholeStars)">star</mat-icon>
-            <mat-icon *ngFor="let h of [].constructor(this.ratingToStars(item.itemRating).halfStars)">star_half</mat-icon>
-            <mat-icon *ngFor="let b of [].constructor(this.ratingToStars(item.itemRating).borderStars)">star_border</mat-icon>
-        </span>
-        <p style="font-weight: bold;">${{item.itemPrice}}</p>
-        <button mat-raised-button color="primary">Add To Cart</button><br>
-        <p>{{item.itemDescription}}</p>
+        <h2>Product Details</h2>
+        <mat-card style="width: 100%; margin: 10px; display: flex; justify-content: flex-start;">
+            <span style="width: 50%; height: 300px; display: flex; justify-content: center;">
+                <img src="../../../assets/images/items/{{item.filename}}" style="object-fit: contain; overflow: hidden;"/>
+            </span>
+            <span>
+                <p style="font-weight: bold;">{{item.itemName}}, ${{item.itemPrice}}</p>
+                <span style="display: flex; justify-content: flex-start;">
+                    <mat-icon *ngFor="let w of [].constructor(this.ratingToStars(item.itemRating).wholeStars)">star</mat-icon>
+                    <mat-icon *ngFor="let h of [].constructor(this.ratingToStars(item.itemRating).halfStars)">star_half</mat-icon>
+                    <mat-icon *ngFor="let b of [].constructor(this.ratingToStars(item.itemRating).borderStars)">star_border</mat-icon>
+                </span>
+                <p>{{item.itemDescription}}</p>
+                <button mat-raised-button color="primary">Add To Cart</button>
+            </span>
+        </mat-card>
     </div>
     <div *ngIf="itemReviews">
         <h2>Reviews</h2>
