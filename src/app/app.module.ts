@@ -19,6 +19,8 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { DialogSellItemComponent } from './components/dialog-sell-item/dialog-sell-item.component';
 import { SearchComponent } from './components/search/search.component';
 import { DialogLoginComponent } from './components/dialog-login/dialog-login.component';
+import { DialogViewItemComponent } from './components/dialog-view-item/dialog-view-item.component';
+import { ItemCardComponent } from './components/item-card/item-card.component';
 
 @NgModule({
   declarations: [
@@ -29,11 +31,14 @@ import { DialogLoginComponent } from './components/dialog-login/dialog-login.com
     SideBarComponent,
     DialogSellItemComponent,
     SearchComponent,
-    DialogLoginComponent
+    DialogLoginComponent,
+    DialogViewItemComponent,
+    ItemCardComponent
   ],
   entryComponents: [
     DialogSellItemComponent,
-    DialogLoginComponent
+    DialogLoginComponent,
+    DialogViewItemComponent
   ],
   imports: [
     BrowserModule,

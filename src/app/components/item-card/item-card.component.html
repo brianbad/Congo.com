@@ -1,0 +1,6 @@
+<mat-card *ngIf="item" class="item-listing-card" (click)="openViewItemDialog()">
+    <div class="item-image-wrapper"><img src="../../../assets/images/items/{{item.filename}}"/></div>
+    <div>{{ item.itemName }}</div>
+    <div class="item-price">${{ item.itemPrice }}</div>
+    <p class="item-description">{{ item.itemDescription }}</p>
+</mat-card>

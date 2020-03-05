@@ -6,11 +6,6 @@
 <div *ngIf="popularItems">
     <h2>Popular Right Now</h2>
     <div class="items-container">
-        <mat-card *ngFor="let item of popularItems" class="item-listing-card">
-            <div class="item-image-wrapper"><img src="../../../assets/images/items/{{item.filename}}"/></div>
-            <div>{{ item.itemName }}</div>
-            <div class="item-price">${{ item.itemPrice }}</div>
-            <p class="item-description">{{ item.itemDescription }}</p>
-        </mat-card>
+        <app-item-card *ngFor="let item of popularItems" [item]="item"></app-item-card>
     </div>
 </div>

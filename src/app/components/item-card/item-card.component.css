@@ -1,0 +1,29 @@
+.item-listing-card {
+    text-align: center;
+}
+
+.item-listing-card:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 10px #FFEF00;
+}
+
+.item-image-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+
+.item-image-wrapper > img {
+    overflow: hidden;
+    object-fit: contain;
+    max-height: 300px;
+}
+
+.item-price {
+    font-weight: bold;
+}
+
+.item-description {
+    color: gray;
+    font-size: 14px;
+}

@@ -11,7 +11,6 @@ import { ItemsService } from '../../services/items.service';
 
 import { DialogSellItemComponent } from '../dialog-sell-item/dialog-sell-item.component';
 import { DialogLoginComponent } from '../dialog-login/dialog-login.component';
-import { EventEmitter } from 'events';
 
 @Component({
   selector: 'app-nav-bar',
@@ -22,8 +21,6 @@ import { EventEmitter } from 'events';
 export class NavBarComponent implements OnInit {
   @Input() sidenav: MatSidenav
   @Input() sidenavOpened: Boolean;
-
-  @Output() currentUserChanged: EventEmitter = new EventEmitter();
 
   constructor(private cookieService: CookieService,
               private authService: AuthenticationService,
@@ -48,9 +45,6 @@ export class NavBarComponent implements OnInit {
    */
   openLoginDialog() {
     const dialogRef = this.loginDialog.open(DialogLoginComponent);
-    dialogRef.afterClosed().subscribe((then) => {
-      this.currentUserChanged.emit("true");
-    });
   }
 
   /**
