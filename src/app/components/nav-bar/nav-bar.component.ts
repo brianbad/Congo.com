@@ -57,7 +57,8 @@ export class NavBarComponent implements OnInit {
    * Send the search term to the item service for query.
    * @param searchTerm 
    */
-  searchItems(searchTerm) {
+  searchItems(searchTerm: String) {
+    searchTerm = searchTerm.replace(/ /g, "+");
     this.router.navigateByUrl("/search");
     this.itemsService.searchItems(searchTerm);
   }

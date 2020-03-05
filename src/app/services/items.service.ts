@@ -40,6 +40,7 @@ export class ItemsService {
   }
 
   searchItems(searchTerm) {
+    console.log(searchTerm);
     this.setHeaders();
     this.http.get(this.API_BASE_URL + "/items/search?query=" + searchTerm, { headers: this.headers }).subscribe((data) => {
       this.lastSearchTerm = searchTerm;

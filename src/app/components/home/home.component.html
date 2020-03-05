@@ -1,7 +1,7 @@
 <div class="backdrop-container">
     <img src="../../../assets/images/site/backdrop.jpg" style="width: 100%;"/>
     <h1 *ngIf="authService.getLoggedInUser()" class="centered">Welcome back, {{ authService.getLoggedInUser().firstName }}</h1>
-    <h1 *ngIf="!authService.getLoggedInUser()" class="centered">Congo has what you need</h1>
+    <h1 *ngIf="!authService.getLoggedInUser()" class="centered">Shop Congo.com!</h1>
 </div>
 <div *ngIf="popularItems">
     <h2>Popular Right Now</h2>
