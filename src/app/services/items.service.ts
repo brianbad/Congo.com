@@ -46,7 +46,7 @@ export class ItemsService {
 
   getPopularItems() {
     this.setHeaders();
-    return this.http.get(this.API_BASE_URL + "/items/random/3", { headers: this.headers });
+    return this.http.get(this.API_BASE_URL + "/items/random/4", { headers: this.headers });
   }
 
   createItem(body) {
