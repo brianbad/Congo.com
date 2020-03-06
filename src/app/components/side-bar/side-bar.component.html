@@ -1,6 +1,7 @@
 <div class="sidenav-wrapper">
-    <div class="sidenav-title" *ngIf="categories">Shop by Category</div>
-    <button mat-button *ngFor="let c of categories" (click)="selectCategory(c)">{{c.categoryName}}</button><br>
+    <div class="sidenav-title" *ngIf="commonService.getCategories()">Shop by Category</div>
+    <button mat-button (click)="selectCategory({categoryId:null})">All Categories</button><br>
+    <button mat-button *ngFor="let c of commonService.getCategories()" (click)="selectCategory(c)">{{c.categoryName}}</button><br>
 
     <div class="sidenav-title">Congo.com</div>
     <button mat-button>About</button><br>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AuthenticationService } from '../../services/authentication.service';
+import { CommonService } from '../../services/common.service';
 import { ItemsService } from '../../services/items.service';
 
 @Component({
@@ -11,6 +12,7 @@ import { ItemsService } from '../../services/items.service';
 export class SearchComponent implements OnInit {
 
   constructor(private authService: AuthenticationService,
+              private commonService: CommonService,
               private itemService: ItemsService) { }
 
   ngOnInit() {

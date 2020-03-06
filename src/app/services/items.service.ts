@@ -60,17 +60,12 @@ export class ItemsService {
     return this.http.post(this.API_BASE_URL + "/item/review", body, { headers: this.headers });
   }
 
-  getItemCategories() {
-    this.setHeaders();
-    return this.http.get(this.API_BASE_URL + "/common/categories", { headers: this.headers });
-  }
-
   searchItems(searchTerm) {
     this.setHeaders();
 
     let q = this.API_BASE_URL + "/items/search?query=" + searchTerm;
-    if (this.selectedCategoryId) {
-      q += ("&category=" + this.selectedCategoryId)
+    if (this.getSelectedCategoryId()) {
+      q += ("&category=" + this.getSelectedCategoryId())
     }
     this.http.get(q, { headers: this.headers }).subscribe((data) => {
       this.lastSearchTerm = searchTerm;
@@ -96,6 +91,14 @@ export class ItemsService {
         var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
         return result * sortOrder;
     }
+  }
+
+  getSelectedCategoryId() {
+    return this.selectedCategoryId;
+  }
+
+  setSelectedCategoryId(id) {
+    this.selectedCategoryId = id;
   }
 
   getItems() {

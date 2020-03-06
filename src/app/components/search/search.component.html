@@ -4,11 +4,15 @@
     <div style="display: flex; justify-content: space-between; margin-left: 10px; margin-right: 10px;">
         <span>
             <h3 *ngIf="itemService.getLastSearchTerm()">
-                Search Results for <i>{{ itemService.getLastSearchTerm() }}</i>&nbsp;
-                <span *ngIf="itemService.getItems().length == 1">(1 result)</span>
-                <span *ngIf="itemService.getItems().length != 1">({{ itemService.getItems().length }} results)</span>
+                Search Results for <i>{{ itemService.getLastSearchTerm() }}</i>
+                <span *ngIf="itemService.getSelectedCategoryId()"> in {{ commonService.getCategoryName(itemService.getSelectedCategoryId()) }}</span>
+                <span *ngIf="itemService.getItems().length == 1"> (1 result)</span>
+                <span *ngIf="itemService.getItems().length != 1"> ({{ itemService.getItems().length }} results)</span>
             </h3>
-            <h3 *ngIf="!itemService.getLastSearchTerm()">Showing all items</h3>
+            <h3 *ngIf="!itemService.getLastSearchTerm()">
+                Showing all items
+                <span *ngIf="itemService.getSelectedCategoryId()"> in {{ commonService.getCategoryName(itemService.getSelectedCategoryId()) }}</span>
+            </h3>
         </span>
         <mat-form-field>
             <mat-label>Sort</mat-label>
