@@ -6,8 +6,6 @@ import { ItemsService } from '../../services/items.service';
 
 import { DialogWriteReviewComponent } from '../../components/dialog-write-review/dialog-write-review.component';
 
-
-
 @Component({
   selector: 'app-view-item',
   templateUrl: './view-item.component.html',
