@@ -1,7 +1,7 @@
 <div class="content-container" *ngIf="item">
     <div class="item-display">
         <h2>Product Details</h2>
-        <mat-card style="width: 100%; margin: 10px; display: flex; justify-content: flex-start;">
+        <mat-card style="margin: 10px; display: flex; justify-content: flex-start;">
             <span style="width: 50%; height: 300px; display: flex; justify-content: center;">
                 <img src="../../../assets/images/items/{{item.filename}}" style="object-fit: contain; overflow: hidden;"/>
             </span>
@@ -18,8 +18,12 @@
             </span>
         </mat-card>
     </div>
+    <mat-divider style="margin-bottom: 10px;"></mat-divider>
     <div *ngIf="itemReviews">
-        <h2>Reviews</h2>
+        <div style="display: flex; justify-content: space-between;">
+            <h2>Reviews</h2>
+            <button mat-button (click)="openReviewDialog()">Write A Review! <mat-icon>edit</mat-icon></button>
+        </div>
         <div *ngFor="let i of itemReviews">
             <mat-card style="margin: 10px; background: rgb(240, 240, 240);">
                 <div style="display: flex; justify-content: flex-start;">

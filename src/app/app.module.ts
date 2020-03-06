@@ -14,13 +14,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule, MatButtonModule, MatMenuModule, MatFormFieldModule, 
          MatInputModule, MatSnackBarModule, MatCardModule,
-         MatProgressSpinnerModule, MatSidenavModule, MatDialogModule, MatDialog } from '@angular/material';
+         MatProgressSpinnerModule, MatSidenavModule, MatDialogModule, 
+         MatDialog, MatDividerModule } from '@angular/material';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { DialogSellItemComponent } from './components/dialog-sell-item/dialog-sell-item.component';
 import { SearchComponent } from './components/search/search.component';
 import { DialogLoginComponent } from './components/dialog-login/dialog-login.component';
 import { ItemCardComponent } from './components/item-card/item-card.component';
 import { ViewItemComponent } from './components/view-item/view-item.component';
+import { DialogWriteReviewComponent } from './components/dialog-write-review/dialog-write-review.component';
 
 @NgModule({
   declarations: [
@@ -33,11 +35,13 @@ import { ViewItemComponent } from './components/view-item/view-item.component';
     SearchComponent,
     DialogLoginComponent,
     ItemCardComponent,
-    ViewItemComponent
+    ViewItemComponent,
+    DialogWriteReviewComponent
   ],
   entryComponents: [
     DialogSellItemComponent,
-    DialogLoginComponent
+    DialogLoginComponent,
+    DialogWriteReviewComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +59,8 @@ import { ViewItemComponent } from './components/view-item/view-item.component';
     MatCardModule,
     MatProgressSpinnerModule,
     MatSidenavModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDividerModule
   ],
   providers: [
     CookieService

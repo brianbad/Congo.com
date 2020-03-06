@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 
 import { ItemsService } from '../../services/items.service';
+
+import { DialogWriteReviewComponent } from '../../components/dialog-write-review/dialog-write-review.component';
+
+
 
 @Component({
   selector: 'app-view-item',
@@ -14,15 +18,30 @@ export class ViewItemComponent implements OnInit {
   private itemReviews;
 
   constructor(private activatedRoute: ActivatedRoute, 
-              private itemsService: ItemsService) { }
+              private itemsService: ItemsService,
+              public writeReviewDialog: MatDialog) { }
 
   ngOnInit() {
+    this.getItemData();
+  }
+
+  getItemData() {
     let itemId = this.activatedRoute.snapshot.paramMap.get('id');
     this.itemsService.getItemById(itemId).subscribe((data) => {
       this.item = data[0];
     })
     this.itemsService.getItemReviews(itemId).subscribe((data) => {
       this.itemReviews = data;
+    })
+  }
+
+  openReviewDialog() {
+    const dialogRef = this.writeReviewDialog.open(DialogWriteReviewComponent, {
+      data: {item: this.item}
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.getItemData()
     })
   }
 

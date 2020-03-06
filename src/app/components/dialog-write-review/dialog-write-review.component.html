@@ -1,0 +1,9 @@
+<h2>
+    Write A Review
+</h2>
+<p>Item: {{data.item.itemName}}</p>
+<div>
+    Rating: <input type="number" min="0" max="5" [(ngModel)]="rating"/><br>
+    <textarea style="width: 500px; height: 200px;" [(ngModel)]="review"></textarea><br>
+    <button mat-raised-button (click)="confirmReview()">Post Review</button>
+</div>

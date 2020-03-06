@@ -54,6 +54,11 @@ export class ItemsService {
     return this.http.post(this.API_BASE_URL + "/items/create", body, { headers: this.headers });
   }
 
+  reviewItem(body) {
+    this.setHeaders();
+    return this.http.post(this.API_BASE_URL + "/item/review", body, { headers: this.headers });
+  }
+
   searchItems(searchTerm) {
     this.setHeaders();
     this.http.get(this.API_BASE_URL + "/items/search?query=" + searchTerm, { headers: this.headers }).subscribe((data) => {
